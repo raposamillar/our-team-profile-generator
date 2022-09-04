@@ -1,11 +1,10 @@
-const Employee = require('../lib/Employee');
+const { Employee } = require('../lib');
 
-test('creates an employee object', () => {
-    const employee = new Employee('Harry');
+const name = "John", id = 23, email = "john@john.com";
+const e = new Employee (name, id, email);
 
-    expect(employee.name).toBe('Harry');
-    expect(employee.id).toBe('123');
-    expect(employee.email).toBe('harry@harry.com');
-    expect(employee.role).toBe('Employee');
-
-});
+test('creates an employee object', () => expect(typeof(e)).toBe("object")); 
+test('testing getName method', () => expect(e.getName()).toBe(name));
+test('testing getId method', () => expect(e.getId()).toBe(id));
+test('testing getEmail method', () => expect(e.getEmail()).toBe(email));
+test('testing getRole method', () => expect(e.getRole()).toBe("Employee"));
