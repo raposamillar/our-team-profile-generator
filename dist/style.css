@@ -9,7 +9,6 @@ nav {
 
 main {
   margin: 5vh;
-  color: #A3AD34;
 }
 
 .managers, .engineers, .interns {
@@ -28,6 +27,16 @@ main {
   border-radius: 8px;
   padding: 5px;
   color: #0F61AD;
+  display: block;
+  margin: auto;
+  
+}
+
+#card-header {
+  background: conic-gradient(#FA7870, #57ABFA, #EAFA3E);
+  padding: 10px;
+  color: #0F61AD;
+  border-radius: 8px;
 }
 
 header {
@@ -40,8 +49,17 @@ header {
 hr {
   height: 10px;
   background: #0F61AD;
+  border-radius: 8px;
 }
 
 i {
   color: #0F61AD;
+}
+
+a {
+  color: #0F61AD;
+}
+
+h1, h2 {
+  font-family: Arial, Helvetica, sans-serif;
 }
