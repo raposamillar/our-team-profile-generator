@@ -29,7 +29,7 @@
 
   ## Questions 
   Please feel free to reach out via either of the links below if you have additional questions about this application.</br>
-  GitHub: <a href="https://github.com/raposamillar/">raposamillar</a></br>
+  GitHub: <a target="_blank" href="https://github.com/raposamillar/">raposamillar</a></br>
   Email: lisa.raposamillar@gmail.com
 
   ## License
