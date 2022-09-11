@@ -9,22 +9,29 @@ const DIST_DIR = path.resolve(__dirname, "dist")
 const distPath = path.join(DIST_DIR, "team-excel.html");
 const teamMembers = [];
 
+const attrPrompts = { // Define what prompt to be used to capture different attributes
+  'name': namePrompt,
+  'id': idPrompt,
+  'email': emailPrompt
+}
+
+const namePrompt =  {
+  type: 'input',
+  name: 'name',
+  message: 'What is your name? (Required)',
+  validate: nameInput => {
+    if (nameInput) {
+      return true;
+    } else {
+      console.log('Please enter your name!');
+      return false;
+    }  
+  }
+};
+
 // series of questions
 const promptManager = () => {
-  return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'name',
-      message: 'What is your name? (Required)',
-      validate: nameInput => {
-        if (nameInput) {
-          return true;
-        } else {
-          console.log('Please enter your name!');
-          return false;
-        }  
-      }
-    },
+  return inquirer.prompt([namePrompt, 
     {
       type: 'input',
       name: 'id',
@@ -100,21 +107,10 @@ const promptEngineer = () => {
   Add a New Engineer
   ==================
   `);
+attrs = Engineer.getAttributes();
 
   return inquirer.prompt([
-      {
-        type: 'input',
-        name: 'name',
-        message: 'What is the name of the engineer? (Required)',
-        validate: engineerName => {
-          if (engineerName) {
-            return true;
-          } else {
-            console.log('Please enter the name of the engineer!');
-            return false;
-          }  
-        }
-      },
+      namePrompt, 
       {
         type: 'input',
         name: 'id',
@@ -170,19 +166,7 @@ Add a New Intern
 `);
 
   return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'name',
-      message: 'What is the name of the intern? (Required)',
-      validate: internName => {
-        if (internName) {
-          return true;
-        } else {
-          console.log('Please enter the name of the intern!');
-          return false;
-        }  
-      }
-    },
+    namePrompt, 
     {
       type: 'input',
       name: 'id',
