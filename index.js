@@ -9,13 +9,7 @@ const DIST_DIR = path.resolve(__dirname, "dist")
 const distPath = path.join(DIST_DIR, "team-excel.html");
 const teamMembers = [];
 
-const attrPrompts = { // Define what prompt to be used to capture different attributes
-  'name': namePrompt,
-  'id': idPrompt,
-  'email': emailPrompt
-}
-
-const namePrompt =  {
+const namePrompt = {
   type: 'input',
   name: 'name',
   message: 'What is your name? (Required)',
@@ -25,14 +19,11 @@ const namePrompt =  {
     } else {
       console.log('Please enter your name!');
       return false;
-    }  
+    }
   }
 };
 
-// series of questions
-const promptManager = () => {
-  return inquirer.prompt([namePrompt, 
-    {
+const idPrompt = {
       type: 'input',
       name: 'id',
       message: 'Enter your employee ID (Required)',
@@ -42,10 +33,11 @@ const promptManager = () => {
         } else {
           console.log('Please enter your employee ID!')
           return false;
-        }  
+        }
       }
-    },
-    {
+    };
+
+const emailPrompt = {
       type: 'input',
       name: 'email',
       message: 'Enter your email address (Required)',
@@ -57,7 +49,15 @@ const promptManager = () => {
           return false;
         }
       }
-    },
+    };
+
+
+// series of questions
+const promptManager = () => {
+  return inquirer.prompt([
+    namePrompt,
+    idPrompt,
+    emailPrompt,
     {
       type: 'input',
       name: 'officeNumber',
@@ -70,7 +70,7 @@ const promptManager = () => {
           return false;
         }
       }
-    },
+    }
   ]).then(answers => {
     console.log(answers);
     const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
@@ -96,7 +96,7 @@ const promptMenu = () => {
           promptIntern();
           break;
         default:
-          buildTeam();    
+          buildTeam();
       }
     });
 };
@@ -110,34 +110,10 @@ const promptEngineer = () => {
 attrs = Engineer.getAttributes();
 
   return inquirer.prompt([
-      namePrompt, 
-      {
-        type: 'input',
-        name: 'id',
-        message: 'What is the ID of the engineer? (Required)',
-        validate: idInput => {
-          if (idInput) {
-            return true;
-          } else {
-            console.log('Please enter the engineer ID!')
-            return false;
-          }  
-        }
-      },
-      {
-        type: 'input',
-        name: 'email',
-        message: 'What is the email address of the engineer? (Required)',
-        validate: engineerEmail => {
-          if (engineerEmail) {
-            return true;
-          } else {
-            console.log('Please enter the email address of the engineer!');
-            return false;
-          }  
-        }
-      },
-      {
+    namePrompt,
+    idPrompt,
+    emailPrompt,
+    {
         type: 'input',
         name: 'github',
         message: 'What is the GitHub username of the engineer? (Required)',
@@ -147,9 +123,9 @@ attrs = Engineer.getAttributes();
           } else {
             console.log('Please enter the GitHub username of the engineer!');
             return false;
-          }  
+          }
         }
-      }
+    }
   ]).then(answers => {
     console.log(answers);
     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
@@ -166,33 +142,9 @@ Add a New Intern
 `);
 
   return inquirer.prompt([
-    namePrompt, 
-    {
-      type: 'input',
-      name: 'id',
-      message: 'What is the ID of the intern? (Required)',
-      validate: idInput => {
-        if (idInput) {
-          return true;
-        } else {
-          console.log('What is the intern ID!')
-          return false;
-        }  
-      }
-    },
-    {
-      type: 'input',
-      name: 'email',
-      message: 'What is the email address of the intern? (Required)',
-      validate: internEmail => {
-        if (internEmail) {
-          return true;
-        } else {
-          console.log('Please enter the email address of the intern!');
-          return false;
-        }  
-      }
-    },
+    namePrompt,
+    idPrompt,
+    emailPrompt,
     {
       type: 'input',
       name: 'school',
@@ -203,7 +155,7 @@ Add a New Intern
         } else {
           console.log('Please enter the school name of the intern!');
           return false;
-        }  
+        }
       }
     }
  ]).then(answers => {
