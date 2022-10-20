@@ -13,7 +13,8 @@
 
   ## Description 
   The team excel profile generator is an organizational tool that displays contact cards for employees working together at three levels: manager, engineer, and intern.<br>
-  <a href="https://drive.google.com/file/d/1I69jOfmlCt6qs1CW2ShcBQ7JVZvboy7n/view?usp=sharing">Walkthrough Video Link</a>
+  <a href="https://drive.google.com/file/d/1I69jOfmlCt6qs1CW2ShcBQ7JVZvboy7n/view?usp=sharing">Walkthrough Video Link</a><br><br>
+  N.B.: Bootcamp study project
   
   ## Installation 
   npm init</br>npm i inquirer@8.2.4
